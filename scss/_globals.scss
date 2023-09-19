@@ -1,0 +1,91 @@
+::selection {
+  background-color: var(--accent);
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 20px;
+  scroll-behavior: smooth;
+  overflow-y: scroll;
+}
+
+html, body {
+  height: 100%;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  color: var(--black);
+  font-family: var(--main-font);
+  font-size: 1rem;
+  line-height: 2;
+}
+
+hr {
+  margin: 0;
+}
+
+h1, h2, h3, h4, h5 {
+  margin: 0;
+  line-height: 1;
+}
+
+p {
+  margin: 0;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+button {
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  object-fit: cover;
+}
+
+iframe {
+  border: none;
+}
+
+address {
+  font-style: normal;
+}
+
+input {
+  font-family: inherit;
+  border: none;
+}
+
+label:has(input:checked) {
+  pointer-events: none;
+}
+
+label {
+  cursor: pointer;
+}
+
+fieldset {
+  font-size: 0;
+  padding: 0;
+  margin: 0;
+  border: 0;
+}

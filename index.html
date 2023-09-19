@@ -1,0 +1,666 @@
+<!doctype html>
+<html class="page" lang="en">
+
+<head class="page__head">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Brooklyn Public Library</title>
+
+  <!-- Link -->
+  <link rel="apple-touch-icon" sizes="180x180" href="icons/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="icons/favicon/favicon-16x16.png">
+  <link rel="manifest" href="icons/favicon/site.webmanifest">
+  <link rel="stylesheet" href="css/main.min.css">
+
+  <!-- Scripts -->
+  <script type="module" src="js/main.min.js" defer></script>
+</head>
+
+<body class="page__body">
+
+<!-- Profile Popup -->
+<div id="profile" class="profile" data-form="profile">
+  <div class="profile__left">
+    <p class="profile__logo">JD</p>
+    <p class="profile__text">John Doe</p>
+  </div>
+
+  <div class="profile__right">
+    <p class="profile__title">My profile</p>
+
+    <button class="profile__close-btn close-btn" type="button">
+      <svg class="close-btn__icon">
+        <use xlink:href="icons/sprite.svg#btn-close"></use>
+      </svg>
+    </button>
+
+    <div class="profile__stats stats">
+      <ul class="stats__list">
+        <li class="stats__item">
+          <p class="stats__title">Visits</p>
+          <svg class="stats__icon">
+            <use xlink:href="icons/sprite.svg#visits"></use>
+          </svg>
+          <p class="stats__text stats__visits">23</p>
+        </li>
+        <li class="stats__item">
+          <p class="stats__title">Bonuses</p>
+          <svg class="stats__icon">
+            <use xlink:href="icons/sprite.svg#bonuses"></use>
+          </svg>
+          <p class="stats__text">1240</p>
+        </li>
+        <li class="stats__item">
+          <p class="stats__title">Books</p>
+          <svg class="stats__icon">
+            <use xlink:href="icons/sprite.svg#reads"></use>
+          </svg>
+          <p class="stats__text stats__purchases">2</p>
+        </li>
+      </ul>
+    </div>
+
+    <div class="profile__rented rented">
+      <p class="rented__title">Rented books</p>
+      <p class="rented__text">Your rented list is empty 📚</p>
+      <ul class="rented__list">
+
+      </ul>
+    </div>
+
+    <div class="profile__user-card user-card">
+      <p class="user-card__text">Card number</p>
+      <label class="user-card__text user-card__text--accent" for="cardCopy" data-text="cardNumber">
+        F00234030
+      </label>
+      <p class="user-card__copy">Copied! ✅</p>
+      <button id="cardCopy" class="user-card__btn">
+        <svg class="user-card__icon">
+          <use xlink:href="icons/sprite.svg#copy"></use>
+        </svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Buy Card Popup -->
+<form id="cardBuy" class="buy-card" data-form="cardBuy">
+  <div class="buy-card__top">
+    <p class="buy-card__title">Buy a library card</p>
+
+    <button class="buy-card__close-btn close-btn" type="button">
+      <svg class="close-btn__icon">
+        <use xlink:href="icons/sprite.svg#btn-close"></use>
+      </svg>
+    </button>
+  </div>
+
+  <div class="buy-card__bottom">
+    <div class="buy-card__form">
+      <ul class="buy-card__list">
+        <li class="buy-card__item">
+          <label class="buy-card__label" for="bankCard">Bank card number</label>
+          <input id="bankCard" class="buy-card__input" placeholder="1234 1234 1234 1234" type="text"
+                 pattern="[0-9]{4} [0-9]{4} [0-9]{4} [0-9]{4}"
+                 name="bankCard" required>
+        </li>
+        <li class="buy-card__item">
+          <label class="buy-card__label buy-card__label" for="expCode">Expiration code</label>
+          <div class="buy-card__label-exp">
+            <label>
+              <input id="expCode" class="buy-card__input" placeholder="MM" title="01-12" pattern="^(0[1-9]|1[0-2])$"
+                     name="expCode"
+                     required>
+            </label>
+            <label>
+              <input class="buy-card__input" placeholder="YY" pattern="^(2[0-9]|30)$" title="20-30" name="expCode"
+                     required>
+            </label>
+          </div>
+        </li>
+        <li class="buy-card__item">
+          <label class="buy-card__label" for="cvc" data-text="cvc">CVC</label>
+          <input id="cvc" class="buy-card__input" type="password" pattern="^\d{3}$" placeholder="***" name="cvc"
+                 required>
+        </li>
+        <li class="buy-card__item">
+          <label class="buy-card__label" for="cardholder">Cardholder name</label>
+          <input id="cardholder" class="buy-card__input" pattern="^[a-zA-Z]+ [a-zA-Z]+$" placeholder="John Doe"
+                 type="text"
+                 name="cardholder" required>
+        </li>
+        <li class="buy-card__item">
+          <label class="buy-card__label" for="postalCode">Postal code</label>
+          <input id="postalCode" class="buy-card__input" type="text" placeholder="12345" pattern="^[\d]{5}$"
+                 name="postalCode" required>
+        </li>
+        <li class="buy-card__item">
+          <label class="buy-card__label" for="city">City / Town</label>
+          <input id="city" class="buy-card__input" placeholder="New York" type="text" pattern="^[a-zA-Z\s]+$"
+                 name="city"
+                 required>
+        </li>
+      </ul>
+
+      <div class="buy-card__submit">
+        <button class="buy-card__btn btn buy-card__btn--lock" type="submit">Buy</button>
+        <p class="buy-card__price">$ 25.00</p>
+      </div>
+    </div>
+    <div class="buy-card__info">
+      <p class="buy-card__text">
+        If you are live, work, attend school, or pay property taxes in New York State, you can get a $25 digital library
+        card right now using this online form. Visitors to New York State can also use this form to apply for a
+        temporary card.
+      </p>
+    </div>
+  </div>
+</form>
+
+<!-- Login Form -->
+<form id="login" class="auth" action="">
+  <p class="auth__helper"></p>
+
+  <p class="auth__text">Login</p>
+
+  <button class="auth__close-btn close-btn" type="button">
+    <svg class="close-btn__icon">
+      <use xlink:href="icons/sprite.svg#btn-close"></use>
+    </svg>
+  </button>
+
+  <ul class="auth__list">
+    <li class="auth__item">
+      <label class="auth__label" for="loginCardEmail">E-mail or readers card</label>
+      <input id="loginCardEmail" class="auth__input" name="email" type="text">
+    </li>
+    <li class="auth__item">
+      <label class="auth__label" for="loginPassword">Password</label>
+      <input id="loginPassword" class="auth__input" name="password" type="password">
+    </li>
+  </ul>
+
+  <button class="btn auth__submit" type="submit">Log In</button>
+
+  <div class="auth__account">
+    <p class="auth__account-text">Don’t have an account?</p>
+    <button class="auth__toggle" type="button" data-form="registration">Register</button>
+  </div>
+</form>
+
+<!-- Registration Form -->
+<form id="registration" class="auth" action="">
+  <p class="auth__helper"></p>
+
+  <p class="auth__text">Register</p>
+
+  <button class="auth__close-btn close-btn" type="button">
+    <svg class="close-btn__icon">
+      <use xlink:href="icons/sprite.svg#btn-close"></use>
+    </svg>
+  </button>
+
+  <ul class="auth__list">
+    <li class="auth__item">
+      <label class="auth__label" for="registrationName">First name</label>
+      <input id="registrationName" class="auth__input" name="firstName" placeholder="John"
+             title="At least 3 characters. Only letters"
+             pattern="[A-Za-z]{3,}"
+             type="text" required>
+    </li>
+    <li class="auth__item">
+      <label class="auth__label" for="registrationLastName">Last name</label>
+      <input id="registrationLastName" class="auth__input" name="lastName" placeholder="Doe"
+             title="At least 3 characters. Only letters"
+             type="text" pattern="[A-Za-z]{3,}"
+             required>
+    </li>
+    <li class="auth__item">
+      <label class="auth__label" for="registrationEmail">E-mail</label>
+      <input id="registrationEmail" class="auth__input" name="email" pattern="[a-z0-9]+@[a-z]+\.[a-z]{2,3}"
+             type="email" placeholder="johndoe@gmail.com"
+             required>
+    </li>
+    <li class="auth__item">
+      <label class="auth__label" for="registrationPassword">Password</label>
+      <input id="registrationPassword" class="auth__input"
+             pattern="^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)[A-Za-z\d]{8,}$"
+             name="password" type="password" required placeholder="At least 8 characters"
+             title="1.The password must contain at least one uppercase letter (A-Z)
+2.The password must contain at least one lowercase letter (a-z).
+3.The password must contain at least one digit (0-9).">
+    </li>
+  </ul>
+
+  <button class="btn auth__submit" type="submit">Sign Up</button>
+
+  <div class="auth__account">
+    <p class="auth__account-text">Already have an account?</p>
+    <button class="auth__toggle" type="button" data-form="login">Login</button>
+  </div>
+</form>
+
+<!-- Overlay -->
+<div id="overlay" class="overlay"></div>
+
+<!-- Header -->
+<header id="header" class="header">
+  <div class="header__inner container">
+    <h1 class="header__title">Brooklyn Public Library</h1>
+
+    <!-- Navigation -->
+    <nav id="navigation" class="header__navigation navigation">
+      <ul class="navigation__list">
+        <li class="navigation__item"><a class="navigation__link" href="#about">About</a></li>
+        <li class="navigation__item"><a class="navigation__link" href="#favorites">Favorites</a></li>
+        <li class="navigation__item"><a class="navigation__link" href="#shop">Coffee shop</a></li>
+        <li class="navigation__item"><a class="navigation__link" href="#contacts">Contacts</a></li>
+        <li class="navigation__item"><a class="navigation__link" href="#library">Library Card</a></li>
+      </ul>
+    </nav>
+
+    <!-- Login -->
+    <button id="loginButton" class="header__login-button login-button" type="button" aria-label="Login Button">
+      <svg class="login-button__icon">
+        <use xlink:href="icons/sprite.svg#profile"></use>
+      </svg>
+    </button>
+
+    <!-- Login Popup -->
+    <div id="loginPopup" class="header__login-popup login-popup"></div>
+
+    <!-- Menu -->
+    <button id="menuButton" class="header__menu-button menu-button" type="button" aria-label="Menu Button">
+      <svg class="menu-button__icon" width="45" height="20">
+        <use xlink:href="icons/sprite.svg#menu"></use>
+      </svg>
+    </button>
+  </div>
+</header>
+
+<!-- Main -->
+<main class="main">
+  <!-- Section Hero -->
+  <section class="hero">
+    <div class="hero__inner container">
+      <h2 class="hero__main-title title">Welcome<br>to the Brooklyn Library</h2>
+    </div>
+  </section>
+
+  <!-- Section About -->
+  <section id="about" class="about section">
+    <div class="about__inner container">
+      <h2 class="about__main-title title title--decoration">About</h2>
+      <p class="about__text section__text">
+        The Brooklyn Library is a free workspace, a large number of books and a cozy coffee shop inside
+      </p>
+
+      <!-- Slider -->
+      <div id="slider" class="about__slider slider">
+        <div class="slider__wrapper">
+
+          <!-- Arrows -->
+          <button class="slider__arrow slider__arrow--disabled" type="button" data-arrow="left" title="Left">
+            <svg class="slider__icon">
+              <use xlink:href="icons/sprite.svg#arrow-left"></use>
+            </svg>
+          </button>
+
+          <button class="slider__arrow" type="button" data-arrow="right" title="Right">
+            <svg class="slider__icon">
+              <use xlink:href="icons/sprite.svg#arrow-right"></use>
+            </svg>
+          </button>
+
+          <!-- Gallery -->
+          <div class="slider__gallery">
+            <img width="450" height="560" src="images/about/photo-1.jpg" alt="Photo 1">
+            <img width="450" height="560" src="images/about/photo-2.jpg" alt="Photo 2">
+            <img width="450" height="560" src="images/about/photo-3.jpg" alt="Photo 3">
+            <img width="450" height="560" src="images/about/photo-4.jpg" alt="Photo 4">
+            <img width="450" height="560" src="images/about/photo-5.jpg" alt="Photo 5">
+          </div>
+
+          <!-- Pagination -->
+          <div class="slider__pagination">
+            <button class="slider__btn slider__btn--active" type="button" data-slide="0" title="1"></button>
+            <button class="slider__btn" type="button" data-slide="1" title="2"></button>
+            <button class="slider__btn" type="button" data-slide="2" title="3"></button>
+            <button class="slider__btn" type="button" data-slide="3" title="4"></button>
+            <button class="slider__btn" type="button" data-slide="4" title="5"></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section Favorites -->
+  <section id="favorites" class="favorites section">
+    <div class="favorites__inner">
+      <div class="container">
+        <h2 class="favorites__main-title title title--decoration">Favorites</h2>
+      </div>
+      <!-- Favorites Form -->
+      <form id="favoritesForm" class="favorites__form">
+        <div class="favorites__top">
+          <div class="container">
+
+            <h3 class="favorites__title">Pick favorites of season</h3>
+
+            <!-- Favorites Toggles -->
+            <div id="favoritesToggles" class="favorites__toggles">
+              <label class="favorites__toggle">
+                <input id="winter" class="favorites__input" type="radio" name="season" value="winter" checked>
+                <span class="favorites__value" data-text="Winter">Winter</span>
+              </label>
+              <label class="favorites__toggle">
+                <input id="spring" class="favorites__input" type="radio" name="season" value="spring">
+                <span class="favorites__value" data-text="Spring">Spring</span>
+              </label>
+              <label class="favorites__toggle">
+                <input id="summer" class="favorites__input" type="radio" name="season" value="summer">
+                <span class="favorites__value" data-text="Summer">Summer</span>
+              </label>
+              <label class="favorites__toggle">
+                <input id="autumn" class="favorites__input" type="radio" name="season" value="autumn">
+                <span class="favorites__value" data-text="Autumn">Autumn</span>
+              </label>
+            </div>
+          </div>
+        </div>
+        <!-- Favorites Books -->
+        <div class="container">
+          <ul id="favoritesBooksList" class="favorites__list"></ul>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- Section Shop -->
+  <section id="shop" class="shop section">
+    <div class="shop__inner container">
+      <h2 class="shop__main-title title title--decoration">Coffee shop</h2>
+
+      <p class="shop__text section__text">
+        In our library, we have of cozy coffee shop, welcoming in customers with frothy cappuccinos and friendly
+        conversation. You can get a favorite book and read in coffee shop. Our barista to cook you best coffee, and
+        also
+        you can try desserts from bakery.
+      </p>
+
+      <!-- Shop Content -->
+      <div class="shop__content">
+        <!-- Shop First -->
+        <div class="shop__content--first">
+          <h3 class="title shop__title shop__title--first">Coffee & Tea</h3>
+
+          <!-- Shop List -->
+          <ul class="shop__list">
+            <li class="shop__item">
+              <span class="shop__name">Cold Brew Coffee</span>
+              <hr class="shop__line">
+              <span class="shop__price">$3</span>
+            </li>
+
+            <li class="shop__item">
+              <span class="shop__name">French Press Pot</span>
+              <hr class="shop__line">
+              <span class="shop__price">$5</span>
+            </li>
+
+            <li class="shop__item">
+              <span class="shop__name">Espresso</span>
+              <hr class="shop__line">
+              <span class="shop__price">$2</span>
+            </li>
+
+            <li class="shop__item">
+              <span class="shop__name">Cappuccino</span>
+              <hr class="shop__line">
+              <span class="shop__price">$4</span>
+            </li>
+
+            <li class="shop__item">
+              <span class="shop__name">Hot tea</span>
+              <hr class="shop__line">
+              <span class="shop__price">$2</span>
+            </li>
+
+            <li class="shop__item">
+              <span class="shop__name">Cold tea</span>
+              <hr class="shop__line">
+              <span class="shop__price">$2</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Shop Second -->
+        <div class="shop__list--second">
+          <h3 class="title shop__title shop__title--second">Desserts & Cakes</h3>
+
+          <ul class="shop__list">
+            <li class="shop__item shop__item--max">
+              <span class="shop__name">Forest Gateau</span>
+              <hr class="shop__line">
+              <span class="shop__price">$16</span>
+            </li>
+
+            <li class="shop__item shop__item--max">
+              <span class="shop__name">Blue Moon</span>
+              <hr class="shop__line">
+              <span class="shop__price">$16</span>
+            </li>
+
+            <li class="shop__item shop__item--max">
+              <span class="shop__name">Truffle Cake</span>
+              <hr class="shop__line">
+              <span class="shop__price">$15</span>
+            </li>
+
+            <li class="shop__item shop__item--max">
+              <span class="shop__name">Chocolate Cake</span>
+              <hr class="shop__line">
+              <span class="shop__price">$18</span>
+            </li>
+
+            <li class="shop__item shop__item--max">
+              <span class="shop__name">Poet’s Dream Cake</span>
+              <hr class="shop__line">
+              <span class="shop__price">$16</span>
+            </li>
+
+            <li class="shop__item shop__item--max">
+              <span class="shop__name">Pineapple Cake</span>
+              <hr class="shop__line">
+              <span class="shop__price">$14</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section Contacts -->
+  <section id="contacts" class="contacts section">
+    <div class="contacts__inner container">
+      <h2 class="contacts__main-title title title--decoration">Our Contacts</h2>
+
+      <div class="contacts__content">
+        <div class="contacts__info">
+          <h3 class="contacts__title">For all Library inquiries:</h3>
+
+          <p class="contacts__text">Please call <a class="contacts__link" href="tel:+6177302370" target="_blank">(617)
+            730-2370</a></p>
+
+          <p class="contacts__text">For TTY service, please call <a class="contacts__link" href="tel:+6177302370"
+                                                                    target="_blank">(617)
+            730-2370</a></p>
+
+          <p class="contacts__text">Putterham Library: <a class="contacts__link" href="tel:+6177302385"
+                                                          target="_blank">(617)
+            730-2385</a></p>
+
+          <h3 class="contacts__title">Senior Staff</h3>
+
+          <p class="contacts__text">Library Director: <a class="contacts__link" href="mailto:amandahirst@gmail.com"
+                                                         target="_blank"><b>Amanda
+            Hirst</b></a></p>
+        </div>
+
+        <!-- Google Maps -->
+        <iframe class="contacts__maps" title="Google Maps"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3025.015975743674!2d-73.9912976!3d40.6956458!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a49b649b8c3%3A0x6342a2291cea2e!2s286%20Cadman%20Plaza%20W%2C%20Brooklyn%2C%20NY%2011201%2C%20USA!5e0!3m2!1sen!2sru!4v1690458107894!5m2!1sen!2sru"
+                allowfullscreen="" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section Library -->
+  <section id="library" class="library section">
+    <div class="library__inner container">
+      <h2 class="library__main-title title title--decoration">Digital Library Cards</h2>
+
+      <div class="library__content">
+        <div class="library__card">
+          <h3 class="library__title library__title--first">Find your Library card</h3>
+
+          <form id="library-form" class="library__form">
+            <div class="library__wrapper">
+              <h4 class="library__title--third">Brooklyn Public Library</h4>
+
+              <label class="library__name">
+                <input id="libraryUsername" class="library__input" type="text" placeholder="Reader's name"
+                       name="username">
+              </label>
+
+              <label class="library__name">
+                <input id="libraryCardNumber" class="library__input" type="text" placeholder="Card number"
+                       name="cardNum">
+              </label>
+            </div>
+
+            <button id="libraryButton" class="btn btn--big library__btn" type="submit">Check the card</button>
+
+            <div id="libraryStats" class="library__stats stats">
+              <ul class="stats__list">
+                <li class="stats__item">
+                  <p class="stats__title">Visits</p>
+                  <svg class="stats__icon">
+                    <use xlink:href="icons/sprite.svg#visits"></use>
+                  </svg>
+                  <p class="stats__text stats__visits">23</p>
+                </li>
+                <li class="stats__item">
+                  <p class="stats__title">Bonuses</p>
+                  <svg class="stats__icon">
+                    <use xlink:href="icons/sprite.svg#bonuses"></use>
+                  </svg>
+                  <p class="stats__text">1240</p>
+                </li>
+                <li class="stats__item">
+                  <p class="stats__title">Books</p>
+                  <svg class="stats__icon">
+                    <use xlink:href="icons/sprite.svg#reads"></use>
+                  </svg>
+                  <p class="stats__text stats__purchases">2</p>
+                </li>
+              </ul>
+            </div>
+          </form>
+        </div>
+        <div class="library__info">
+          <h3 class="library__title library__title--second">Get a reader card</h3>
+
+          <p class="library__text">
+            You will be able to see a reader card after logging into account or you can register a new account
+          </p>
+
+          <div class="library__auth">
+            <button class="library__auth-btn btn btn--auth" type="button"
+                    data-form="registration">Sign Up
+            </button>
+            <button class="library__auth-btn btn btn--auth" type="button" data-form="login">Log in</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+
+    <!-- Footer Top -->
+    <div class="footer__top">
+      <div class="footer__contacts">
+        <a class="footer__link" rel="noopener" href="https://goo.gl/maps/YxqjEU9t45jFGPXp6" target="_blank">
+          <address class="footer__address">286 Cadman Plaza, New York, NY 11238, United States</address>
+        </a>
+
+        <!-- Socials -->
+        <ul class="footer__socials socials">
+          <li>
+            <a class="socials__link" rel="noopener" href="https://twitter.com/i/flow/login" title="Twitter"
+               target="_blank">
+              <svg class="socials__icon" width="24" height="24">
+                <use xlink:href="icons/sprite.svg#twitter"></use>
+              </svg>
+            </a>
+          </li>
+
+          <li>
+            <a class="socials__link" rel="noopener" href="https://www.instagram.com/" title="Instagram"
+               target="_blank">
+              <svg class="socials__icon" width="24" height="24">
+                <use xlink:href="icons/sprite.svg#instagram"></use>
+              </svg>
+            </a>
+          </li>
+
+          <li>
+            <a class="socials__link" rel="noopener" href="https://www.facebook.com/" title="Facebook" target="_blank">
+              <svg class="socials__icon" width="24" height="24">
+                <use xlink:href="icons/sprite.svg#facebook"></use>
+              </svg>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="footer__scheduling">
+        <!-- Schedule -->
+        <ul class="schedule">
+          <li class="schedule__day">
+            Mon - Fri
+
+            <ul class="schedule__list">
+              <li class="schedule__time">08:00 am - 07:00 pm</li>
+            </ul>
+          </li>
+
+          <li class="schedule__day">
+            Sat - Sun
+
+            <ul class="schedule__list">
+              <li class="schedule__time">10:00 am - 06:00 pm</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Footer Bottom -->
+    <div class="footer__bottom">
+      <p class="footer__text">2023</p>
+      <a class="footer__link" rel="noopener" href="https://rs.school/js-stage0/" target="_blank">The Rolling Scopes
+        School</a>
+      <a class="footer__link" rel="noopener" href="https://github.com/devenrgy" target="_blank">Alex</a>
+    </div>
+  </div>
+</footer>
+</body>
+
+</html>
